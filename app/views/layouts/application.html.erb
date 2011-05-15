@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WisiszMi</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="flash">
+    <% if notice %><div class="notice"><%= raw notice %></div><% end %>
+    <% if alert %><div class="alert"><%= raw alert %></div><% end %>
+  </div>
+
+  <%= yield %>
+
+  <div id="fb-root"></div>
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <script>
+    FB.init({
+      appId  : '<%= APP_ID %>',
+      status : true, // check login status
+      cookie : true, // enable cookies to allow the server to access the session
+      xfbml  : true  // parse XFBML
+    });
+  </script>
+</body>
+</html>

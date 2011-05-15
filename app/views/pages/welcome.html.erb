@@ -1,0 +1,29 @@
+<h1>Pages#welcome</h1>
+<p>Find me in app/views/pages/welcome.html.erb</p>
+
+<%= link_to "home", root_url, :id => :home %>
+<%= link_to "start using app", "", :id => :login %>
+
+<script>
+  $().ready(function() {
+    var el = document.getElementById("login");
+    el.onclick = function() {
+      FB.login(function(response) {
+        if (response.session) {
+          window.location.href = "<%= root_url %>";
+        }
+      });
+      return false;
+    };
+
+    FB.getLoginStatus(function(response) {
+      if (response.session) {
+        var el = document.getElementById('login');
+        el.style.display = 'none';
+      } else {
+        var el = document.getElementById('home');
+        el.style.display = 'none';
+      }
+    });
+  });
+</script>

@@ -1,0 +1,16 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+  we_are_even: "We are even"
+  owes_me: "Owes me: "
+  you_owe_me: "You owe me"
+  i_owe_you: "I owe you"
+  add_debt: "Add debt"
+
+  activerecord:
+    models:
+      debt: "pożyczka"
+    attributes:
+      debt:
+        description: "Description"
+        value: "Value"

@@ -1,0 +1,8 @@
+<ul>
+  <div>
+  <% index = 0 %>
+  <% @friends.each do |f| %>
+    <%= render :partial => 'friend', :locals => { :friend => f } %>
+  <% end %>
+  </div>
+</ul>

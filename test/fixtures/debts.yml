@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_from_id: 1
+  user_to_id: 1
+  value: 9.99
+  description: MyString
+
+two:
+  user_from_id: 1
+  user_to_id: 1
+  value: 9.99
+  description: MyString

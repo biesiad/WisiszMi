@@ -1,0 +1,31 @@
+<li class="friend">
+  <span class="name"><%= friend.name %></span>
+  <div class="balance">
+    <span class="label"><%= current_user.balance_for(friend) == 0 ? t(:we_are_even) : t(:owes_me) %></span>
+    <span class="value"><%= current_user.balance_for(friend) == 0 ? "" : current_user.balance_for(friend) %></span>
+  </div>
+  <div style="clear: both;"></div>
+  <table>
+    <% current_user.debts_for(friend).each do |debt| %>
+    <tr class="<%= current_user == debt.debitor ? "debit" : "credit" %>">
+      <td><%= debt.description %></td>
+      <td><%= debt.value %></td>
+    </tr>
+    <% end %>
+  </table>
+  <span><%=t :add_debt %></span>
+  <%= form_for @debt do |form| %>
+    <div class="field">
+      <%= form.label :description %><br />
+      <%= form.text_field :description %>
+    </div>
+    <div class="field">
+      <%= form.label :value, Debt.human_attribute_name(:value) %><br />
+      <%= form.text_field :value %>
+    </div>
+    <%= form.hidden_field :user_from_id, { :value => current_user.id } %>
+    <%= form.hidden_field :user_to_id, { :value => friend.id } %>
+    <%= submit_tag t(:i_owe_you), :name => "credit" %> 
+    <%= submit_tag t(:you_owe_me), :name => "debit" %> 
+  <% end %>
+</li>
