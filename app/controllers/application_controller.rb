@@ -35,6 +35,8 @@ class ApplicationController < ActionController::Base
       elsif !@current_user.is_user
         friends_json = graph.get_connections("me", "friends")
         @current_user.load_friends friends_json
+        @current_user.is_user = true
+        @current_user.save
       end
       @current_user
     end 
