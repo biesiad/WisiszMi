@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
         @current_user = User.create :facebook_id => facebook_id, :name => graph.get_object("me")["name"], :is_user => true
         friends_json = graph.get_connections("me", "friends")
         @current_user.load_friends friends_json
-      elsif not @current_user.is_user?
+      elsif !@current_user.is_user
         friends_json = graph.get_connections("me", "friends")
         @current_user.load_friends friends_json
       end
