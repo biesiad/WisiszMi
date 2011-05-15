@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.first 
-    #@current_user ||= load_user 
+    #@current_user ||= User.first 
+    @current_user ||= load_user 
   end
 
   def graph

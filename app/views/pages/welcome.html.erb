@@ -1,8 +1,10 @@
-<h1>Pages#welcome</h1>
-<p>Find me in app/views/pages/welcome.html.erb</p>
-
-<%= link_to "home", root_url, :id => :home %>
-<%= link_to "start using app", "", :id => :login %>
+<div class="welcome">
+  <%= image_tag "logo.png" %>
+  <br/>
+  <br/>
+  <br/>
+  <%= link_to "Start using application", "", :id => :login, :class => "button" %>
+</div>
 
 <script>
   $().ready(function() {
@@ -15,15 +17,5 @@
       });
       return false;
     };
-
-    FB.getLoginStatus(function(response) {
-      if (response.session) {
-        var el = document.getElementById('login');
-        el.style.display = 'none';
-      } else {
-        var el = document.getElementById('home');
-        el.style.display = 'none';
-      }
-    });
   });
 </script>

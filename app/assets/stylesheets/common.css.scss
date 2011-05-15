@@ -67,3 +67,26 @@ input {
 span.translation_missing {
   background-color: #f99;
 }
+
+.button {
+  display: inline-block;
+  padding: 0 4px;
+  border: 1px solid #bdc7d8;
+  color: inherit;
+  width: auto;
+  height: 20px;
+  line-height: 20px;
+  font-weight: bold;
+  border: 1px solid #999999;
+  background-color: #e8e8e8;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(228,228,227)), color-stop(1, rgb(245,246,246)));
+  background-image: -moz-linear-gradient(center bottom, rgb(228,228,227) 0%, rgb(245,245,246) 100%);
+  box-shadow: 0 1px 0px #e5e5e5;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.logo-mini {
+  margin-left: 10px;
+}
