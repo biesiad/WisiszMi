@@ -7,7 +7,6 @@ gem 'rails', '3.1.0.beta1'
 
 gem 'sqlite3'
 gem 'koala'
-gem 'chicken_little'
 
 # Asset template engines
 gem 'sass'
@@ -25,8 +24,12 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+  gem 'pg', :require => 'pg'
+end
+
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'mocha'
 end
