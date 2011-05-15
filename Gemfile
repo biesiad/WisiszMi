@@ -7,6 +7,7 @@ gem 'rails', '3.1.0.beta1'
 
 gem 'sqlite3'
 gem 'koala'
+gem 'chicken_little'
 
 # Asset template engines
 gem 'sass'
@@ -27,4 +28,5 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'mocha'
 end

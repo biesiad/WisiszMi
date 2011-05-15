@@ -3,13 +3,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :graph
 
   def authenticate
-    puts current_user.inspect  
     redirect_to welcome_url unless current_user
   end
 
   def current_user
-    #@current_user ||= User.first 
-    @current_user ||= load_user 
+    @current_user ||= User.first 
+    #@current_user ||= load_user 
   end
 
   def graph

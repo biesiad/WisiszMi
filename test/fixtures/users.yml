@@ -1,9 +1,26 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  facebook_id: MyString
-  name: MyString
+user1:
+  id: 1
+  facebook_id: 11
+  name: user1 name 
 
-two:
-  facebook_id: MyString
-  name: MyString
+user2:
+  id: 2
+  facebook_id: 12
+  name: user2 name 
+
+user3:
+  id: 3
+  facebook_id: 13
+  name: user3 name 
+
+user4:
+  id: 4
+  facebook_id: 14
+  name: user4 name 
+
+user5:
+  id: 5
+  facebook_id: 15
+  name: user5 name 

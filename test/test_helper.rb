@@ -10,4 +10,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def stub_current_user
+    @current_user = users(:user1)
+  end
 end

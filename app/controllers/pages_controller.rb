@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   end
 
   def home
-    @frineds = current_user.frineds
+    @friends = current_user.friends
   end
 end

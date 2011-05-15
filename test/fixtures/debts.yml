@@ -1,13 +1,22 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+from1_to2:
+  id: 1
   user_from_id: 1
-  user_to_id: 1
+  user_to_id: 2
   value: 9.99
-  description: MyString
+  description: "Debt from 1 to 2"
 
-two:
+from1_to3:
+  id: 2
   user_from_id: 1
+  user_to_id: 3
+  value: 3.99
+  description: "Debt from 1 to 3"
+
+from2_to1:
+  id: 3
+  user_from_id: 2
   user_to_id: 1
-  value: 9.99
-  description: MyString
+  value: 4.99
+  description: "Debt from 2 to 3"

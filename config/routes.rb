@@ -1,9 +1,5 @@
 Wisiszmi::Application.routes.draw do
 
-  get "pages/welcome"
-
-  get "pages/home"
-
   get '/welcome', :controller => :pages, :action => :welcome
   get '/home', :controller => :pages, :action => :home
 

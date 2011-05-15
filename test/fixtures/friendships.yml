@@ -1,9 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+user1_user2:
   user_id: 1
-  friend_id: 1
+  friend_id: 2
 
-two:
+user1_user3:
   user_id: 1
-  friend_id: 1
+  friend_id: 3
+
+user1_user4:
+  user_id: 1
+  friend_id: 4
