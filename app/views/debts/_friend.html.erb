@@ -25,7 +25,7 @@
     </div>
     <%= form.hidden_field :user_from_id, { :value => current_user.id } %>
     <%= form.hidden_field :user_to_id, { :value => friend.id } %>
-    <%= submit_tag t(:i_owe_you), :name => "credit" %> 
-    <%= submit_tag t(:you_owe_me), :name => "debit" %> 
+    <%= submit_tag t(:i_owe_you), :name => "debit" %> 
+    <%= submit_tag t(:you_owe_me), :name => "credit" %> 
   <% end %>
 </li>

@@ -21,17 +21,18 @@ class ApplicationController < ActionController::Base
   end
 
   def load_user 
-    puts "load user" 
     cookie_user = oauth.get_user_info_from_cookies(cookies)
-    puts cookie_user.inspect
-    puts "cookie user" 
     if cookie_user 
       token = cookie_user["access_token"]
       graph = Koala::Facebook::GraphAPI.new(token)
       facebook_id = cookie_user["uid"]
       @current_user = User.where(:facebook_id => facebook_id).first
+      friends_json = graph.get_connections("me", "friends")
       if @current_user.nil?
-        @current_user = User.create :facebook_id => facebook_id, :name => graph.get_object("me")["name"]
+        @current_user = User.create :facebook_id => facebook_id, :name => graph.get_object("me")["name"], :is_user => true
+        friends_json = graph.get_connections("me", "friends")
+        @current_user.load_friends friends_json
+      elsif not @current_user.is_user?
         friends_json = graph.get_connections("me", "friends")
         @current_user.load_friends friends_json
       end
