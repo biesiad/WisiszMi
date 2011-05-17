@@ -1,0 +1,14 @@
+pl:
+  we_are_even: "Jesteśmy kwita"
+  balance: "Bilans: "
+  you_owe_me: "Wisisz mi"
+  i_owe_you: "Wiszę Ci"
+  add_debt: "Dodaj pożyczkę"
+
+  activerecord:
+    models:
+      debt: "Pożyczka"
+    attributes:
+      debt:
+        description: "Opis"
+        value: "Wartość"

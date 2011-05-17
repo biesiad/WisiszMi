@@ -1,7 +1,7 @@
 <li class="friend">
   <span class="name"><%= friend.name %></span>
   <div class="balance">
-    <span class="label"><%= current_user.balance_for(friend) == 0 ? t(:we_are_even) : t(:owes_me) %></span>
+    <span class="label"><%= current_user.balance_for(friend) == 0 ? t(:we_are_even) : t(:balance) %></span>
     <span class="value"><%= current_user.balance_for(friend) == 0 ? "" : current_user.balance_for(friend) %></span>
   </div>
   <div style="clear: both;"></div>
