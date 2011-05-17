@@ -58,4 +58,9 @@ class UserTest < ActiveSupport::TestCase
     friend = users(:user2)
     assert_equal 2, @user.debts_for(friend).count
   end
+
+  test "User#debts should return all user debts" do
+    @user.credits.create :user_to => users(:user2), :value => 10, :description => "Lunch"
+    assert_equal 4, @user.debts.count
+  end
 end

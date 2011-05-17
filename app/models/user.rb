@@ -8,18 +8,21 @@ class User < ActiveRecord::Base
 
   has_many :credits, :class_name => "Debt", :foreign_key => "user_from_id"
   has_many :debits, :class_name => "Debt", :foreign_key => "user_to_id"
-   
+  
+  def debts
+    @debts ||= Debt.where("user_from_id = ? or user_to_id = ?", self.id, self.id)
+  end
+
   def debts_for friend
-    users = [self.id, friend.id]
-    Debt.where(:user_from_id => users, :user_to_id => users)
+    debts.select { |d| d.user_from_id == friend.id || d.user_to_id == friend.id }
   end
 
   def credits_for friend
-    self.credits.where :user_to_id => friend.id
+    debts.select { |d| d.user_to_id == friend.id }
   end
 
   def debits_for friend
-    self.debits.where :user_from_id => friend.id
+    debts.select { |d| d.user_from_id == friend.id }
   end
 
   def balance_for friend
