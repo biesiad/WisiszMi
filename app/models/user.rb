@@ -35,17 +35,16 @@ class User < ActiveRecord::Base
   end
 
   def load_friends friends_json
-    friends_ids = []
+    friend_ids = []
     friends_json.each do |f|
-      friend = friends.where(:facebook_id => f["id"]).first
-      if friend && friend.name != f["name"]
-        friend.name = f["name"]
-        friend.save
+      friend = User.where(:facebook_id => f["id"]).first
+      if friend.nil? && f["id"] != self.facebook_id
+        friend = friends.create! :facebook_id => f["id"], :name => f["name"]
       else
-        friend = friends.create :facebook_id => f["id"], :name => f["name"]
+        friends << friend
       end 
-      friends_ids << friend.id
+      friend_ids << friend.id
     end
-    friendships.where("friend_id not in (?)", friends_ids).destroy_all
+    friendships.where("friend_id not in (?)", friend_ids).destroy_all
   end
 end
