@@ -25,9 +25,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
-  #gem 'therubyracer-heroku', '0.8.1.pre3'
-  gem 'therubyracer-heroku'
-  gem 'rails3-static-assets'
+  gem 'therubyracer-heroku', '0.8.1.pre3'
   gem 'pg', :require => 'pg'
 end
 
