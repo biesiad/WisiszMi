@@ -1,0 +1,195 @@
+/*
+ * FIXME: Introduce SCSS & Sprockets
+*/
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+body {
+  width: 760px;
+  font-family: "Lucida Grande",tahoma,verdana,arial,sans-serif;
+  font-size: 11px;
+  color: #333; }
+
+h1 {
+  font-size: 30px; }
+
+h2 {
+  font-size: 13px;
+  font-weight: 700; }
+
+a {
+  color: #3B5998;
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+input {
+  height: 18px;
+  padding: 0px 4px;
+  border: 1px solid #bdc7d8;
+  color: inherit; }
+  input[type=submit] {
+    width: auto;
+    height: 20px;
+    font-weight: bold;
+    border: 1px solid #999999;
+    background-color: #e8e8e8;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e4e4e3), color-stop(1, #f5f6f6));
+    background-image: -moz-linear-gradient(center bottom, #e4e4e3 0%, #f5f5f6 100%);
+    box-shadow: 0 1px 0px #e5e5e5; }
+
+#flash {
+  margin: 0 10px 10px;
+  text-align: center; }
+  #flash div {
+    padding: 10px; }
+    #flash div.notice {
+      color: #0a0;
+      background-color: #dfd; }
+    #flash div.alert {
+      color: #a00;
+      background-color: #fdd; }
+    #flash div p {
+      font-size: 8px; }
+      #flash div p:first-letter {
+        text-transform: capitalize; }
+
+span.translation_missing {
+  background-color: #f99; }
+
+.button {
+  display: inline-block;
+  padding: 0 4px;
+  border: 1px solid #bdc7d8;
+  color: inherit;
+  width: auto;
+  height: 20px;
+  line-height: 20px;
+  font-weight: bold;
+  border: 1px solid #999999;
+  background-color: #e8e8e8;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e4e4e3), color-stop(1, #f5f6f6));
+  background-image: -moz-linear-gradient(center bottom, #e4e4e3 0%, #f5f5f6 100%);
+  box-shadow: 0 1px 0px #e5e5e5; }
+  .button:hover {
+    text-decoration: none; }
+
+.logo-mini {
+  margin-left: 10px; }
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+.friend {
+  float: left;
+  width: 340px;
+  margin: 10px 10px 20px;
+  padding: 10px;
+  background-color: #F2F2F2; }
+  .friend .name {
+    font-weight: bold; }
+  .friend .balance {
+    float: right; }
+    .friend .balance .label {
+      font-size: 13px;
+      font-weight: bold; }
+    .friend .balance .value {
+      font-size: 30px;
+      font-weight: bold; }
+  .friend table {
+    width: 100%;
+    margin: 10px 0;
+    border-collapse: collapse; }
+    .friend table tr:first-child {
+      border-top: none; }
+    .friend table tr {
+      border-top: 1px solid #F2F2F2; }
+      .friend table tr.debit {
+        color: #a00;
+        background-color: #fdd; }
+      .friend table tr.credit {
+        color: #0a0;
+        background-color: #dfd; }
+    .friend table td {
+      padding: 0 5px;
+      margin: 1px 0;
+      height: 20px;
+      line-height: 20px; }
+    .friend table td:last-child {
+      text-align: right; }
+  .friend form label {
+    font-size: 8px; }
+  .friend form input[type=text] {
+    width: 330px; }
+  .friend form input[name="debt[value]"] {
+    float: left;
+    width: 160px; }
+  .friend form input[type=submit] {
+    float: right;
+    padding: 0 4px;
+    margin: 0px 0px 0px 4px; }
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+  Pages
+*/
+.welcome {
+  text-align: center; }
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
