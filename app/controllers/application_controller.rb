@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
       graph = Koala::Facebook::GraphAPI.new(token)
       facebook_id = cookie_user["uid"]
       @current_user = User.where(:facebook_id => facebook_id).first
-      friends_json = graph.get_connections("me", "friends")
       if @current_user.nil?
         @current_user = User.create :facebook_id => facebook_id, :name => graph.get_object("me")["name"], :is_user => true
         friends_json = graph.get_connections("me", "friends")

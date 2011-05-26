@@ -8,12 +8,13 @@
   <table>
     <% current_user.debts_for(friend).each do |debt| %>
     <tr class="<%= current_user == debt.debitor ? "debit" : "credit" %>">
+      <td><%= link_to "delete", debt, confirm: t(:are_you_sure?), method: :delete, class: "delete" %></td>
       <td><%= debt.description %></td>
       <td><%= debt.value %></td>
     </tr>
     <% end %>
   </table>
-  <span><%=t :add_debt %></span>
+  <%= link_to t(:add_debt), new_debt_path(@debt), class: "add_debt" %>
   <%= form_for @debt do |form| %>
     <div class="field">
       <%= form.label :description %><br />

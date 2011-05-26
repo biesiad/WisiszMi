@@ -12,9 +12,10 @@ gem 'koala'
 gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
+gem 'tilt'
+gem 'hike'
 
 gem 'jquery-rails'
-gem 'sprockets', '2.0.0.beta.5'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -26,7 +27,8 @@ gem 'sprockets', '2.0.0.beta.5'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
-  gem 'therubyracer-heroku', '0.8.1.pre3'
+  #gem 'therubyracer-heroku', '0.8.1.pre3'
+  gem 'therubyracer-heroku'
   gem 'pg', :require => 'pg'
 end
 

@@ -83,7 +83,7 @@ class DebtsController < ApplicationController
     @debt.destroy
 
     respond_to do |format|
-      format.html { redirect_to debts_url }
+      format.html { redirect_to debts_url, notice: t(:debt_destroyed) }
       format.json { head :ok }
     end
   end
