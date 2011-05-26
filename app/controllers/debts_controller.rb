@@ -54,7 +54,7 @@ class DebtsController < ApplicationController
         }
       else
         format.html { 
-          redirect_to :back, :alert => "t(:debt_not_added). #{error_format @debt.errors}"
+          redirect_to :back, :alert => "#{t(:debt_not_added)}. #{error_format @debt.errors}"
         }
       end
     end
