@@ -5,6 +5,17 @@
 //= require jquery_ujs
 //= require_tree .
 
-window.onload = function() {
+$(function() {
+  FB.init({
+    appId  : Facebook.APP_ID,
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true  // parse XFBML
+  });
   FB.Canvas.setAutoResize();
-};
+
+  $('.app_info_page').click(function(event) {
+    top.location.href = 'http://www.facebook.com/apps/application.php?id=' + Facebook.APP_ID + '&sk=info';
+    event.preventDefault();
+  });
+});
