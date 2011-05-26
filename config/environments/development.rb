@@ -1,10 +1,6 @@
 Wisiszmi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # facebook authentication
-  APP_ID = "131105293628044"
-  APP_SECRET = "de5678baf09bba89b032cfa442ced2bd"
-  
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

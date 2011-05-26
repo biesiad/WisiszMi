@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   private
   def oauth
-    @oauth ||= Koala::Facebook::OAuth.new(APP_ID, APP_SECRET, root_url)
+    @oauth ||= Koala::Facebook::OAuth.new(Facebook::APP_ID, Facebook::APP_SECRET, root_url)
   end
 
   def load_user 
