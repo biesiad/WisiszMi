@@ -7,7 +7,7 @@ pl:
   add_debt: "Dodaj pożyczkę"
 
   debt_added: "Dług został utworzony"
-  debt_not_created: "Dług nie został utworzony"
+  debt_not_added: "Dług nie został utworzony"
   debt_updated: "Dług został zmieniony"
   debt_destroyed: "Dług usunięty"
 

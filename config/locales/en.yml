@@ -7,7 +7,7 @@ en:
   add_debt: "Add debt"
 
   debt_added: "Debt created"
-  debt_not_created: "Debt not created"
+  debt_not_added: "Debt not created"
   debt_updated: "Debt updated"
   debt_destroyed: "Debt has been removed"
 
