@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515184907) do
+ActiveRecord::Schema.define(:version => 20110526211430) do
 
   create_table "debts", :force => true do |t|
     t.integer  "user_from_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110515184907) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_user",     :default => false, :null => false
+    t.string   "image"
   end
 
 end
