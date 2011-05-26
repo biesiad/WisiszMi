@@ -39,6 +39,10 @@ input {
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(228,228,227)), color-stop(1, rgb(245,246,246)));
     background-image: -moz-linear-gradient(center bottom, rgb(228,228,227) 0%, rgb(245,245,246) 100%);
     box-shadow: 0 1px 0px #e5e5e5;
+    &:active {
+      background-image: none;
+      background-color: #ddd;
+    }
   }
 }
 
