@@ -50,11 +50,11 @@ class DebtsController < ApplicationController
     respond_to do |format|
       if @debt.save
         format.html { 
-          redirect_to :back, :notice => "Debt added."
+          redirect_to :back, :notice => t(:debt_added) 
         }
       else
         format.html { 
-          redirect_to :back, :alert => "Debt not added. #{error_format @debt.errors}"
+          redirect_to :back, :alert => "t(:debt_not_added). #{error_format @debt.errors}"
         }
       end
     end
@@ -67,7 +67,7 @@ class DebtsController < ApplicationController
 
     respond_to do |format|
       if @debt.update_attributes(params[:debt])
-        format.html { redirect_to @debt, notice: 'Debt was successfully updated.' }
+        format.html { redirect_to @debt, notice: t(:debt_updated) }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

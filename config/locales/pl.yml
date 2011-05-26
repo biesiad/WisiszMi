@@ -5,6 +5,10 @@ pl:
   you_owe_me: "Wisisz mi"
   i_owe_you: "Wiszę Ci"
   add_debt: "Dodaj pożyczkę"
+
+  debt_added: "Dług został utworzony"
+  debt_not_created: "Dług nie został utworzony"
+  debt_updated: "Dług został zmieniony"
   debt_destroyed: "Dług usunięty"
 
   activerecord:
@@ -15,11 +19,11 @@ pl:
         description: "Opis"
         value: "Wartość"
     errors:
-      debt:
-        attributes:
-          description:
-            blank: "nie może być pusty"
-          value:
-            blank: "nie może być pusty"
-          value:
-            not_a_number: "nie jest liczbą"
+      models:
+        debt:
+          attributes:
+            description:
+              blank: "nie może być pusty"
+            value:
+              blank: "nie może być pusty"
+              not_a_number: "nie jest liczbą"
