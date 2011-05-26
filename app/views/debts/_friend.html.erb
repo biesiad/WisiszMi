@@ -1,5 +1,4 @@
 <li class="friend">
-  <img class="picture" src="<%= friend.image %>/>
   <span class="name"><%= friend.name %></span>
   <div class="balance">
     <span class="label"><%= current_user.balance_for(friend) == 0 ? t(:we_are_even) : t(:balance) %></span>
