@@ -5,5 +5,6 @@
 $ ->
   # toggle debt form
   $('.add_debt').click (event) -> 
-    $(this).next().toggle();
+    $(this).next().toggle()
+    $(this).next().children().find('#debt_description').focus()
     event.preventDefault() 
