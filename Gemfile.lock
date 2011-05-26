@@ -14,7 +14,7 @@ GEM
       rack-cache (~> 1.0.1)
       rack-mount (~> 0.8.1)
       rack-test (~> 0.6.0)
-      sprockets (~> 2.0.0.beta.5)
+      sprockets (~> 2.0.0.beta.2)
       tzinfo (~> 0.3.27)
     activemodel (3.1.0.rc1)
       activesupport (= 3.1.0.rc1)
