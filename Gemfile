@@ -1,4 +1,5 @@
-source 'http://rubygems.org'
+#source 'http://rubygems.org'
+source :gemcutter
 
 gem 'rails', '3.1.0.rc1'
 
