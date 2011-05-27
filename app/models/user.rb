@@ -50,4 +50,17 @@ class User < ActiveRecord::Base
     end
     friendships.where("friend_id not in (?)", friend_ids).destroy_all
   end
+
+  def self.load_images
+    oauth = Koala::Facebook::OAuth.new Facebook::APP_ID, Facebook::APP_SECRET
+    rest = Koala::Facebook::RestAPI.new oauth.get_app_access_token
+    ids = User.all.map { |u| u.facebook_id }
+    puts ids.inspect 
+    users = rest.fql_query "select uid, pic_square from user where uid in (#{ids.to_s[1..-2]})"
+    users.each do |u|
+      user = User.where(:facebook_id => u["uid"]).first
+      user.image = u["pic_square"]
+      user.save!
+    end
+  end
 end

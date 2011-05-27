@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    #@current_user ||= User.first 
-    @current_user ||= load_user 
+    @current_user ||= User.first 
+    #@current_user ||= load_user 
   end
 
   def graph
@@ -24,16 +24,17 @@ class ApplicationController < ActionController::Base
     cookie_user = oauth.get_user_info_from_cookies(cookies)
     if cookie_user 
       token = cookie_user["access_token"]
-      graph = Koala::Facebook::GraphAPI.new(token)
+      rest = Koala::Facebook::RestAPI.new token
       facebook_id = cookie_user["uid"]
       @current_user = User.where(:facebook_id => facebook_id).first
       if @current_user.nil?
-        @current_user = User.create :facebook_id => facebook_id, :name => graph.get_object("me")["name"], :is_user => true
-        friends_json = graph.get_connections("me", "friends")
-        @current_user.load_friends friends_json
+        user = rest.fql_query "select uid, name, pic_square from user where uid=#{facebook_id}"
+        @current_user = User.create :facebook_id => user["uid"], :name => user["name"], :image => user["pic_square"], :is_user => true
+        friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friends where uid1=#{facebook_id}"
+        @current_user.load_friends friends
       elsif !@current_user.is_user
-        friends_json = graph.get_connections("me", "friends")
-        @current_user.load_friends friends_json
+        friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friends where uid1=#{facebook_id}"
+        @current_user.load_friends friends
         @current_user.is_user = true
         @current_user.save
       end
