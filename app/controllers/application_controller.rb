@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.first 
-    #@current_user ||= load_user 
+    #@current_user ||= User.first 
+    @current_user ||= load_user 
   end
 
   def graph
@@ -28,12 +28,13 @@ class ApplicationController < ActionController::Base
       facebook_id = cookie_user["uid"]
       @current_user = User.where(:facebook_id => facebook_id).first
       if @current_user.nil?
-        user = rest.fql_query "select uid, name, pic_square from user where uid=#{facebook_id}"
+        user = rest.fql_query("select uid, name, pic_square from user where uid=#{facebook_id}").first
         @current_user = User.create :facebook_id => user["uid"], :name => user["name"], :image => user["pic_square"], :is_user => true
-        friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friends where uid1=#{facebook_id}"
+        friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friend where uid1=#{facebook_id})"
+        puts friends.inspect
         @current_user.load_friends friends
       elsif !@current_user.is_user
-        friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friends where uid1=#{facebook_id}"
+        friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friend where uid1=#{facebook_id})"
         @current_user.load_friends friends
         @current_user.is_user = true
         @current_user.save

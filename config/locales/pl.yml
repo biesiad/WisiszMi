@@ -19,6 +19,8 @@ pl:
         description: "Opis"
         value: "Wartość"
     errors:
+      messages:
+        record_invalid: "Niepoprawny wpis"
       models:
         debt:
           attributes:
