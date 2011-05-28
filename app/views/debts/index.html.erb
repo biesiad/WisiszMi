@@ -2,11 +2,9 @@
   <%= image_tag "logo_mini.png", :class => "logo-mini" %>
 </a>
 
-<ul>
-  <div>
+<ul class="friends">
   <% index = 0 %>
   <% @friends.each do |f| %>
     <%= render :partial => 'friend', :locals => { :friend => f } %>
   <% end %>
-  </div>
 </ul>
