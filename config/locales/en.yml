@@ -13,6 +13,8 @@ en:
 
 
   activerecord:
+    messages:
+      record_invalid: "Record invalid"
     models:
       debt: "debt"
     attributes:
