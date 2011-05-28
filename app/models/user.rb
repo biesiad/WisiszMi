@@ -57,10 +57,9 @@ class User < ActiveRecord::Base
     oauth = Koala::Facebook::OAuth.new Facebook::APP_ID, Facebook::APP_SECRET
     rest = Koala::Facebook::RestAPI.new oauth.get_app_access_token
     ids = User.all.map { |u| u.facebook_id }
-    puts ids.inspect 
     users = rest.fql_query "select uid, pic_square from user where uid in (#{ids.to_s[1..-2]})"
     users.each do |u|
-      user = User.where(:facebook_id => u["uid"]).first
+      user = User.where(:facebook_id => u["uid"].to_s).first
       user.image = u["pic_square"]
       user.save!
     end
