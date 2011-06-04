@@ -47,16 +47,11 @@ class DebtsController < ApplicationController
       @debt.user_from_id, @debt.user_to_id = @debt.user_to_id, @debt.user_from_id
     end
 
-    respond_to do |format|
-      if @debt.save
-        format.html { 
-          redirect_to :back, :notice => t(:debt_added) 
-        }
-      else
-        format.html { 
-          redirect_to :back, :alert => "#{t(:debt_not_added)}. #{error_format @debt.errors}"
-        }
-      end
+    if @debt.save
+      redirect_to :back, :notice => t(:debt_added) 
+      # todo: send message to receiver if is_user?
+    else
+      redirect_to :back, :alert => "#{t(:debt_not_added)}. #{error_format @debt.errors}"
     end
   end
 
