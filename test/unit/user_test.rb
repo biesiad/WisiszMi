@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "User#load_friends should create new friend" do
-    json = JSON.parse '[{"name": "user0", "id": "10"}, {"name": "user2", "id": "12"}, {"name": "user3", "id": "13"}, {"name": "user4", "id": "14"}]'
+    json = JSON.parse '[{"name": "user0", "uid": "10"}, {"name": "user2", "uid": "12"}, {"name": "user3", "uid": "13"}, {"name": "user4", "uid": "14"}]'
     assert_difference('@user.friends.count') do
       @user.load_friends json
     end
@@ -14,13 +14,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "User#load_friends should update friend if exits" do
-    json = JSON.parse '[{"name": "user2 new name", "id": "12"}, {"name": "user3", "id": "13"}, {"name": "user4", "id": "14"}]'
+    json = JSON.parse '[{"name": "user2 new name", "uid": "22"}, {"name": "user3", "uid": "23"}, {"name": "user4", "uid": "24"}]'
     @user.load_friends json
     assert_equal 1, @user.friends.where(:name => "user2 new name").count
   end
 
   test "User#load_friends should remove friendship if not present" do
-    json = JSON.parse '[{"name": "user2", "id": "12"}]'
+    json = JSON.parse '[{"name": "user2", "uid": "32"}]'
     @user.load_friends json
     assert_equal 1, @user.friends.count
   end
