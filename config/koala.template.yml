@@ -1,0 +1,10 @@
+# config/koala.yml
+development:
+  app_id: ""
+  app_secret: ""
+test:
+  app_id: ""
+  app_secret: ""
+production:
+  app_id: ""
+  app_secret: ""

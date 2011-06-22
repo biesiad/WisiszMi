@@ -16,3 +16,5 @@ hardcopy*
 public/*/cache/*
 ~Gemfile.lock
 database.yml
+koala.yml
+
