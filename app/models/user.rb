@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     puts "Loading Friends"
     friend_ids = []
     friends_json.each do |f|
-      friend = User.where(:facebook_id => f["uid"]).first
+      friend = User.where(:facebook_id => f["uid"].to_s).first
       if friend.nil?
         friend = friends.create :facebook_id => f["uid"], :name => f["name"], :image => f["pic_square"]
       elsif !friends.include? friend
