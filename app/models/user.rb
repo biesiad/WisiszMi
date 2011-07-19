@@ -41,10 +41,10 @@ class User < ActiveRecord::Base
     friend_ids = []
     friends_json.each do |f|
       friend = User.where(:facebook_id => f["id"]).first
-      if friend.nil? && f["id"] != self.facebook_id
+      if User.where(:facebook_id => f["id"]).empty?
         friend = friends.create :facebook_id => f["uid"], :name => f["name"], :image => f["pic_square"]
         logger.error friend.errors.inspect
-      else
+      elsif friend.nil?
         friends << friend
       end 
       friend_ids << friend.id unless friend.id.nil?
