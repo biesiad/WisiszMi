@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   def load_friends friends_json
     friend_ids = []
     friends_json.each do |f|
-      friend = User.where(:facebook_id => f["id"]).first
+      friend = friends.where(:facebook_id => f["id"]).first
       if User.where(:facebook_id => f["id"]).empty?
         friend = friends.create :facebook_id => f["uid"], :name => f["name"], :image => f["pic_square"]
         logger.error friend.errors.inspect
