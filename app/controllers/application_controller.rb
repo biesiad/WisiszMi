@@ -31,13 +31,16 @@ class ApplicationController < ActionController::Base
         user = rest.fql_query("select uid, name, pic_square from user where uid=#{facebook_id}").first
         @current_user = User.create :facebook_id => user["uid"], :name => user["name"], :image => user["pic_square"], :is_user => true
         friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friend where uid1=#{facebook_id})"
-        puts friends.inspect
         @current_user.load_friends friends
       elsif !@current_user.is_user
+        puts @current_user.inspect
+        puts "NOT User"
         friends = rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friend where uid1=#{facebook_id})"
         @current_user.load_friends friends
-        @current_user.is_user = true
-        @current_user.save
+        puts "friends loaded"
+        u = User.find @current_user.id
+        u.is_user = true
+        u.save
       end
       @current_user
     end 

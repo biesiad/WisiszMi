@@ -38,17 +38,16 @@ class User < ActiveRecord::Base
   end
 
   def load_friends friends_json
-    puts friends_json
     friend_ids = []
     friends_json.each do |f|
       friend = User.where(:facebook_id => f["id"]).first
       if friend.nil? && f["id"] != self.facebook_id
         friend = friends.create :facebook_id => f["uid"], :name => f["name"], :image => f["pic_square"]
-        puts friend.errors.inspect
+        logger.error friend.errors.inspect
       else
         friends << friend
       end 
-      friend_ids << friend.id
+      friend_ids << friend.id unless friend.id.nil?
     end
     friendships.where("friend_id not in (?)", friend_ids).destroy_all
   end
