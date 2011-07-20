@@ -4,10 +4,8 @@
 
 $ ->
   # friends vertical align
-  $('.friends').masonry({
-    itemSelector : '.friend',
-    #columnWidth : 380
-  })
+  $('.friends').masonry
+    itemSelector : '.friend'
   
   # toggle debt form
   $('.add_debt').click (event) -> 
@@ -16,11 +14,27 @@ $ ->
     $(this).trigger('debt_toggle')
     event.preventDefault() 
 
+  # debt form toggle relayout
   $('.add_debt').bind 'debt_toggle', ->
     $('.friends').masonry('reload')
-  
-  #$('input[type=submit]').bind 'click', ->
-    #FB.ui({ method: 'apprequests', to: '100002261412007', message: 'Dodałem swoją pożyczkę {{opis}} na {{wartosc}}. Przejdź do aplikacji WisiszMi aby ją zobaczyć', data: '' }, (response) ->
-      #console.log(arguments))
-    #console.log('addind debt')
-    #event.preventDefault() 
+
+  # debt submitting
+  $('input[type=submit]').bind 'click', (event) ->
+    form = $(@).closest('form')
+    friend = JSON.parse form.find('#friend').val()
+    return true if friend.is_user 
+
+    description = form.find('#debt_description').val()
+    value = form.find('#debt_value').val()
+
+    FB.ui
+      method: 'apprequests'
+      to: friend.facebook_id
+      message: 'Twój znajomy właśnie dodał nowy dług: "' + description + '", o wartości: ' + value + ',- . Wejdź do aplikacji WisiszMi, aby lepiej zarządzać swoimi pożyczkami.'
+      =>
+        if $(@).attr('name') == 'debit'
+          debit = $('<input type=hidden name=debit value=true />')
+          form.append(debit)
+        form.submit()
+
+    return false 
