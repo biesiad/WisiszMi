@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
 
     @current_user ||= User.where(:facebook_id => user_json["uid"]).first || create_user
     upgrade_user unless @current_user.is_user
-    @current_user
   end
 
 
@@ -42,6 +41,7 @@ class ApplicationController < ActionController::Base
     user.load_friends friends_json
     user.is_user = true
     user.save
+    user
   end
 
   def user_json 
