@@ -1,5 +1,6 @@
 class DebtsController < ApplicationController
   before_filter :authenticate
+  before_filter :requests
 
   # GET /debts
   # GET /debts.json
@@ -43,6 +44,7 @@ class DebtsController < ApplicationController
   # POST /debts.json
   def create
     @debt = Debt.new(params[:debt])
+
     if params[:debit]
       @debt.user_from_id, @debt.user_to_id = @debt.user_to_id, @debt.user_from_id
     end
@@ -90,5 +92,12 @@ class DebtsController < ApplicationController
         errors_string << "<p>#{Debt.human_attribute_name(key)}: #{value}</p>"  
       end 
       errors_string
+    end
+
+    def requests
+      requests = graph.get_object('me/apprequests')["data"]
+      #graph.batch do |graph_api|
+        requests.each { |request| graph.delete_object(request["id"]) }
+      #end
     end
 end
