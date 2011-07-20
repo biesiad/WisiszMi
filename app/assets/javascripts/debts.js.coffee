@@ -19,8 +19,8 @@ $ ->
   $('.add_debt').bind 'debt_toggle', ->
     $('.friends').masonry('reload')
   
-  $('input[type=submit]').bind 'click', ->
-    FB.ui({ method: 'apprequests', to: '100002261412007', message: 'Dodałem swoją pożyczkę {{opis}} na {{wartosc}}. Przejdź do aplikacji WisiszMi aby ją zobaczyć', data: '' }, (response) ->
-      console.log(arguments))
-    console.log('addind debt')
-    event.preventDefault() 
+  #$('input[type=submit]').bind 'click', ->
+    #FB.ui({ method: 'apprequests', to: '100002261412007', message: 'Dodałem swoją pożyczkę {{opis}} na {{wartosc}}. Przejdź do aplikacji WisiszMi aby ją zobaczyć', data: '' }, (response) ->
+      #console.log(arguments))
+    #console.log('addind debt')
+    #event.preventDefault() 

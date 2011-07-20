@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
 
     @current_user ||= User.where(:facebook_id => user_json["uid"]).first || create_user
     upgrade_user unless @current_user.is_user
+    @current_user
   end
-
 
   def graph
     @graph ||= Koala::Facebook::GraphAPI.new(token)
