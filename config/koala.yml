@@ -1,0 +1,10 @@
+# config/koala.yml
+development:
+  app_id: "131105293628044"
+  app_secret: "c45247a6e48e2082051f2d0eb1a17582"
+test:
+  app_id: ""
+  app_secret: ""
+production:
+  app_id: "128198663921787"
+  app_secret: "588bdda78d8ce1c98f002204dcefde30"
