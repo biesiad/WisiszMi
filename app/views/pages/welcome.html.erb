@@ -10,14 +10,17 @@
 
 <script>
   $().ready(function() {
-    var el = document.getElementById("login");
-    el.onclick = function() {
+    FB.getLoginStatus(function(response) {
+      if (response.session) { window.location.href = "<%= root_url %>"; } 
+   });
+
+    $("#login").click(function() {
       FB.login(function(response) {
         if (response.session) {
           window.location.href = "<%= root_url %>";
         }
       });
       return false;
-    };
+    });
   });
 </script>
