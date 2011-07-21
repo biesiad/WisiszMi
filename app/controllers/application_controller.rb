@@ -8,10 +8,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return nil unless user_json
-
-    @current_user ||= User.where(:facebook_id => user_json["uid"]).first || create_user
-    upgrade_user unless @current_user.is_user
-    @current_user
+    @current_user ||= find_user || create_user
   end
 
   def graph
@@ -36,11 +33,13 @@ class ApplicationController < ActionController::Base
     user
   end
 
-  def upgrade_user
+  def find_user 
     user = User.where(:facebook_id => user_json["uid"]).first
-    user.load_friends friends_json
-    user.is_user = true
-    user.save
+    unless user.is_user
+      user.is_user = true
+      user.save
+      user.load_friends friends_json
+    end
     user
   end
 
