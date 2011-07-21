@@ -70,10 +70,20 @@ class UserTest < ActiveSupport::TestCase
     user5.save
     
     friends = @user.friends_sorted
-    puts @user.friends_sorted.inspect
     assert_equal 2, friends[0].id 
     assert_equal 3, friends[1].id 
     assert_equal 5, friends[2].id 
     assert_equal 4, friends[3].id 
+  end
+
+  test "User#friends_sorted should order debt count only for user-friend debts" do
+    user1 = users(:user1) 
+    user1.name = "z"
+    user1.save
+
+    user5 = users(:user5)
+    friends = user5.friends_sorted
+    assert_equal 2, friends[0].id
+    assert_equal 1, friends[1].id
   end
 end
