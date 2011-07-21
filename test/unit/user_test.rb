@@ -70,6 +70,7 @@ class UserTest < ActiveSupport::TestCase
     user5.save
     
     friends = @user.friends_sorted
+    puts @user.friends_sorted.inspect
     assert_equal 2, friends[0].id 
     assert_equal 3, friends[1].id 
     assert_equal 5, friends[2].id 
