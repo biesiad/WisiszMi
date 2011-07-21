@@ -15,3 +15,11 @@ user1_user4:
 user1_user5:
   user_id: 1
   friend_id: 5
+
+user5_user2:
+  user_id: 5
+  friend_id: 2
+
+user5_user1:
+  user_id: 5
+  friend_id: 1

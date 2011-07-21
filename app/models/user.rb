@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_many :debits, :class_name => "Debt", :foreign_key => "user_to_id"
   
   def friends_sorted
-    @friends_sorted ||= friends.joins('left outer join debts on debts.user_from_id = users.id or debts.user_to_id = users.id').select('users.facebook_id, users.id, users.is_user, users.name, users.image, count(debts.id)').group('users.id, users.facebook_id, users.is_user, users.name, users.image').order('count(debts.id) desc, users.name')
+    top = friends.reject { |f| self.debts_for(f).count == 0 }.sort { |a, b| self.debts_for(b).count <=> self.debts_for(a).count }
+    bottom = friends.reject { |f| top.include?(f) }.sort { |a, b| a.name <=> b.name }
+    top + bottom
   end
 
   def debts
