@@ -5,7 +5,7 @@ class DebtsController < ApplicationController
   # GET /debts
   # GET /debts.json
   def index
-    @friends = current_user.friends
+    @friends = current_user.friends_sorted
     @debt = Debt.new
 
     respond_to do |format|

@@ -65,6 +65,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "User#friends_sorted should be ordered by debts count and names" do
-    #@friends = @user.friends_ordered
+    user5 = users(:user5)
+    user5.name = 'aaaaaaname'
+    user5.save
+    
+    friends = @user.friends_sorted
+    assert_equal 2, friends[0].id 
+    assert_equal 3, friends[1].id 
+    assert_equal 5, friends[2].id 
+    assert_equal 4, friends[3].id 
   end
 end
