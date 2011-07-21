@@ -13,14 +13,10 @@ class DebtsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:friends)
   end
 
-  #test "should get new" do
-    #get :new
-    #assert_response :success
-  #end
-
   test "should create debt" do
     assert_difference('Debt.count') do
-      post :create, :debt => @debt.attributes
+      debt = Debt.new(:user_from_id => 1, :user_to_id => 2, :description => "desc", :value => 12)
+      post :create, :debt => debt.attributes
     end
   end
 
@@ -29,10 +25,10 @@ class DebtsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  #test "should get edit" do
-    #get :edit, :id => @debt.to_param
-    #assert_response :success
-  #end
+  test "should get edit" do
+    get :edit, :id => @debt.to_param
+    assert_response :success
+  end
 
   test "should update debt" do
     put :update, :id => @debt.to_param, :debt => @debt.attributes

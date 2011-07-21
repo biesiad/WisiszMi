@@ -1,0 +1,10 @@
+rvm:
+  - 1.9.2
+
+script: "rake test"
+
+env: "RAILS_ENV='test'"
+
+branches:
+  only:
+    - master

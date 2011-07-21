@@ -6,11 +6,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "User#load_friends should create new friend" do
-    json = JSON.parse '[{"name": "user0", "uid": "10"}, {"name": "user2", "uid": "12"}, {"name": "user3", "uid": "13"}, {"name": "user4", "uid": "14"}]'
-    assert_difference('@user.friends.count') do
+    json = JSON.parse '[{"name": "user6", "uid": "16"}, {"name": "user2", "uid": "12"}, {"name": "user3", "uid": "13"}, {"name": "user4", "uid": "14"}, {"name": "user5", "uid": "15"}]'
+    assert_difference "@user.friends.count" do
       @user.load_friends json
     end
-    assert_equal 4, @user.friends.count
+    assert_equal 5, @user.friends.count
   end
 
   test "User#load_friends should update friend if exits" do
@@ -62,5 +62,9 @@ class UserTest < ActiveSupport::TestCase
   test "User#debts should return all user debts" do
     @user.credits.create :user_to => users(:user2), :value => 10, :description => "Lunch"
     assert_equal 4, @user.debts.count
+  end
+
+  test "User#friends_sorted should be ordered by debts count and names" do
+    #@friends = @user.friends_ordered
   end
 end

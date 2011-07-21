@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   has_many :credits, :class_name => "Debt", :foreign_key => "user_from_id"
   has_many :debits, :class_name => "Debt", :foreign_key => "user_to_id"
   
+  def friends_sorted
+    @friends_sorted ||= current_user.friends.joins('left outer join debts on debts.user_from_id = users.id or debts.user_to_id = users.id').select('users.*, count(debts.id)').group('users.id').order('count(debts.id) desc, users.name')
+  end
+
   def debts
     @debts ||= Debt.where("user_from_id = ? or user_to_id = ?", self.id, self.id)
   end
@@ -38,12 +42,11 @@ class User < ActiveRecord::Base
   end
 
   def load_friends friends_json
-    puts "Loading Friends"
     friend_ids = []
     friends_json.each do |f|
       friend = User.where(:facebook_id => f["uid"].to_s).first
       if friend.nil?
-        friend = friends.create :facebook_id => f["uid"], :name => f["name"], :image => f["pic_square"]
+        friend = friends.create! :facebook_id => f["uid"], :name => f["name"], :image => f["pic_square"]
       elsif !friends.include? friend
         friends << friend
       end 

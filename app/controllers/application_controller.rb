@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return nil unless user_json
-    @current_user ||= find_user || create_user
+    @current_user ||= (find_user || create_user)
   end
 
   def graph
@@ -25,6 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_user 
+    return nil if user_json.nil?
     facebook_id = user_json["uid"]
     json_user = rest.fql_query("select uid, name, pic_square from user where uid=#{user_json["uid"]}").first
     user = User.create :facebook_id => json_user["uid"], :name => json_user["name"], :image => json_user["pic_square"], :is_user => true
@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_user 
+    return nil if user_json.nil?
     user = User.where(:facebook_id => user_json["uid"]).first
     unless user.is_user
       user.is_user = true
