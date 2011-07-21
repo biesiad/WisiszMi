@@ -5,7 +5,7 @@ class DebtsController < ApplicationController
   # GET /debts
   # GET /debts.json
   def index
-    @friends = current_user.friends.order("name asc")
+    @friends = current_user.friends
     @debt = Debt.new
 
     respond_to do |format|
@@ -95,6 +95,7 @@ class DebtsController < ApplicationController
     end
 
     def requests
+      return unless params[:reqiest_ids]
       requests = graph.get_object('me/apprequests')["data"]
       #graph.batch do |graph_api|
         requests.each { |request| graph.delete_object(request["id"]) }
