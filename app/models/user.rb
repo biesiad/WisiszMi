@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def friends_search pattern
-    selected = friends.where("name like('%#{pattern}%')")
+    selected = friends.where("upper(name) like('%#{pattern.upcase}%')")
     friends_sort selected 
   end
 
