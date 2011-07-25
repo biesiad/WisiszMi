@@ -44,17 +44,17 @@ class DebtsControllerTest < ActionController::TestCase
   end
 
   test "should get search" do
-    post :search
+    post :search, :pattern => ""
     assert_response :success
   end
 
   test "should assign @friends" do
-    post :search
+    post :search, :pattern => ""
     assert_not_nil assigns(:friends)
   end
 
   test "should render index template" do
-    post :search
+    post :search, :pattern => ""
     assert_template :index
   end
 end
