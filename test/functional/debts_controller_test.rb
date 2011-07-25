@@ -42,4 +42,19 @@ class DebtsControllerTest < ActionController::TestCase
 
     assert_redirected_to debts_path
   end
+
+  test "should get search" do
+    post :search
+    assert_response :success
+  end
+
+  test "should assign @friends" do
+    post :search
+    assert_not_nil assigns(:friends)
+  end
+
+  test "should render index template" do
+    post :search
+    assert_template :index
+  end
 end

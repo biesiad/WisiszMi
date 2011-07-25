@@ -2,6 +2,12 @@
   <%= image_tag "logo_mini.png", :class => "logo-mini" %>
 </a>
 
+<%= form_tag search_debts_path, :id => "search" do %>
+  <%= text_field_tag :pattern %>
+  <%= submit_tag :search %>
+<% end %>
+<div style="clear: both;"></div>
+
 <ul class="friends">
   <% index = 0 %>
   <% @friends.each do |f| %>

@@ -10,9 +10,12 @@ class User < ActiveRecord::Base
   has_many :debits, :class_name => "Debt", :foreign_key => "user_to_id"
   
   def friends_sorted
-    top = friends.reject { |f| self.debts_for(f).count == 0 }.sort { |a, b| self.debts_for(b).count <=> self.debts_for(a).count }
-    bottom = friends.reject { |f| top.include?(f) }.sort { |a, b| a.name <=> b.name }
-    top + bottom
+    friends_sort friends.all
+  end
+
+  def friends_search pattern
+    selected = friends.where("name like('%#{pattern}%')")
+    friends_sort selected 
   end
 
   def debts
@@ -58,5 +61,11 @@ class User < ActiveRecord::Base
     friendships.where("friend_id not in (?)", friend_ids).destroy_all
   end
 
+  private 
+  def friends_sort friends_list
+    top = friends_list.reject { |f| self.debts_for(f).count == 0 }.sort { |a, b| self.debts_for(b).count <=> self.debts_for(a).count }
+    bottom = friends_list.reject { |f| top.include?(f) }.sort { |a, b| a.name <=> b.name }
+    top + bottom
+  end
 end
 

@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= (find_user || create_user)
+    @current_user ||= User.where(:name => "Wiesia Biesiad").first
+    #@current_user ||= (find_user || create_user)
   end
 
   def graph

@@ -85,6 +85,13 @@ class DebtsController < ApplicationController
     end
   end
 
+  def search
+    @friends = current_user.friends_search params[:pattern]
+    @debt = Debt.new
+
+    render :index
+  end
+
   private
     def error_format errors
       errors_string = ""
