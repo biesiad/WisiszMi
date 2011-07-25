@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  #console.log($('#search').attr('id'))
+
   # friends vertical align
   $('.friends').masonry
     itemSelector : '.friend'
@@ -38,3 +40,6 @@ $ ->
         form.submit()
 
     return false 
+
+  # focus on user search field
+  $('#pattern').focus()

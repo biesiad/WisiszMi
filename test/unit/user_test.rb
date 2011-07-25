@@ -86,4 +86,20 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 2, friends[0].id
     assert_equal 1, friends[1].id
   end
+
+  test "User#friends_search should return all friends for empty string" do
+    friends = @user.friends_search ""
+    assert_equal 4, friends.count
+  end
+
+  test "User#friends_search should return friends with name matching pattern" do
+    friends = @user.friends_search "2 na"
+    assert_equal 1, friends.count
+
+    friends = @user.friends_search "name"
+    assert_equal 4, friends.count
+
+    friends = @user.friends_search "qewr"
+    assert_equal 0, friends.count
+  end
 end

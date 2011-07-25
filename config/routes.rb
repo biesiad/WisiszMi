@@ -3,7 +3,12 @@ Wisiszmi::Application.routes.draw do
   get '/welcome', :controller => :pages, :action => :welcome
   get '/home', :controller => :pages, :action => :home
 
-  resources :debts
+  resources :debts do
+    collection do
+      post 'search'
+    end
+  end
+
   resources :friendships
   resources :users
 
