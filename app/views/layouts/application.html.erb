@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>WisiszMi</title>
-  <%= stylesheet_link_tag    "application", :cache => true %>
-  <%= javascript_include_tag "application", :cache => true %>
+  <%= stylesheet_link_tag "application", :cache => true, :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -26,5 +25,6 @@
     });
     FB.Canvas.setAutoResize();
   </script>
+  <%= javascript_include_tag "application",:cache => true, :debug => Rails.env.development? %>
 </body>
 </html>
