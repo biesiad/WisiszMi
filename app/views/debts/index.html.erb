@@ -2,11 +2,10 @@
   <%= image_tag "logo_mini.png", :class => "logo-mini" %>
 </a>
 
-<%= form_tag search_debts_path, :id => "search" do %>
+<%= form_tag search_debts_path, :id => "search", :class => "clearfix" do %>
   <%= text_field_tag :pattern %>
   <%= submit_tag :search, :value => t(:search) %>
 <% end %>
-<div style="clear: both;"></div>
 
 <ul class="friends">
   <% @friends.each do |f| %>
