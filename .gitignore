@@ -15,3 +15,5 @@ hardcopy*
 127.0.0.1	localhost
 public/*/cache/*
 ~Gemfile.lock
+database.yml
+koala.yml
