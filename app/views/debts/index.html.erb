@@ -3,7 +3,7 @@
 </a>
 
 <%= form_tag search_debts_path, :id => "search", :class => "clearfix" do %>
-  <%= text_field_tag :pattern %>
+  <%= text_field_tag :pattern, @pattern, :placeholder => "szukaj znajomego" %>
   <%= submit_tag :search, :value => t(:search) %>
 <% end %>
 

@@ -86,7 +86,8 @@ class DebtsController < ApplicationController
   end
 
   def search
-    @friends = current_user.friends_search params[:pattern]
+    @pattern = params[:pattern]
+    @friends = current_user.friends_search @pattern
     @debt = Debt.new
 
     render :index
