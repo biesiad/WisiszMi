@@ -5,22 +5,10 @@
   <br/>
   <br/>
   <br/>
-  <%= link_to "Start using application", "#", :id => :login, :class => "button" %>
 </div>
 
 <script>
-  $().ready(function() {
     FB.getLoginStatus(function(response) {
-      if (response.session) { window.location.href = "<%= root_url %>"; } 
-   });
-
-    $("#login").click(function() {
-      FB.login(function(response) {
-        if (response.session) {
-          window.location.href = "<%= root_url %>";
-        }
-      });
-      return false;
+        if (response.session) { window.location.href = "<%= root_url %>"; } 
     });
-  });
 </script>
