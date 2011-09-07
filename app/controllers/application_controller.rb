@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :graph
+  before_filter :p3p
 
   def authenticate
     redirect_to welcome_url unless current_user
@@ -56,5 +57,10 @@ class ApplicationController < ActionController::Base
 
   def friends_json
     rest.fql_query "select uid, name, pic_square from user where uid in (select uid2 from friend where uid1=#{user_json["uid"]})"
+  end
+
+  def p3p
+    response.headers['P3P'] = 'CP="CAO PSA OUR"'
+#      headers['P3P'] = %|CP="CAO DSP CURa ADMa DEVa OUR NOR DEM STA"
   end
 end
