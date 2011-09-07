@@ -5,10 +5,11 @@
   <br/>
   <br/>
   <br/>
+  <%= link_to "Start using application", root_url, :id => :login, :class => "button" %>
 </div>
 
 <script>
-    FB.getLoginStatus(function(response) {
-        if (response.session) { window.location.href = "<%= root_url %>"; } 
-    });
+  FB.getLoginStatus(function(response) {
+      if (response.session) { window.location.href = "<%= root_url %>"; } 
+  });
 </script>
