@@ -10,16 +10,20 @@
 
 <script>
     window.onload = function () {
-        FB.getLoginStatus(function(response) {
+        FB.getLoginStatus(onGetLoginStatus);
+
+        function onGetLoginStatus(response) {
             if (response.session) { 
                 window.location = "<%= root_url %>"; 
             } else {
-                FB.login(function(response) {
-                    if (response.session) {
-                        window.location = "<%= root_url %>";
-                    }
-                });
+                FB.login(onLogin);
             }
-        });
+        };
+
+        function onLogin(response) {
+            if (response.session) {
+                window.location = "<%= root_url %>";
+            }
+        };
     };
 </script>

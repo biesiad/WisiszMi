@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-#      @current_user ||= User.where(:name => "Wiesia Biesiad").first
+#   @current_user ||= User.where(:name => "Wiesia Biesiad").first
     @current_user ||= (find_user || create_user)
   end
 
@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def find_user 
-    logger.info "user_json: #{user_json.inspect}"
     return nil if user_json.nil?
     user = User.where(:facebook_id => user_json["uid"]).first
     unless user.is_user
@@ -61,6 +60,5 @@ class ApplicationController < ActionController::Base
 
   def p3p
     response.headers['P3P'] = 'CP="CAO PSA OUR"'
-#      headers['P3P'] = %|CP="CAO DSP CURa ADMa DEVa OUR NOR DEM STA"
   end
 end
