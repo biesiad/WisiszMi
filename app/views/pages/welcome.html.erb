@@ -9,7 +9,15 @@
 </div>
 
 <script>
-  FB.getLoginStatus(function(response) {
-      if (response.session) { window.location.href = "<%= root_url %>"; } 
-  });
+FB.getLoginStatus(function(response) {
+    if (response.session) { 
+        window.location.href = "<%= root_url %>"; 
+    } else {
+        FB.login(function(response) {
+            if (response.session) {
+                window.location.href = "<%= root_url %>";
+            }
+        });
+    }
+});
 </script>
