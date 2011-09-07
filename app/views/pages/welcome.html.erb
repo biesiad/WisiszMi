@@ -12,11 +12,11 @@
     window.onload = function () {
         FB.getLoginStatus(function(response) {
             if (response.session) { 
-                window.location.href = "<%= root_url %>"; 
+                window.location = "<%= root_url %>"; 
             } else {
                 FB.login(function(response) {
                     if (response.session) {
-                        window.location.href = "<%= root_url %>";
+                        window.location = "<%= root_url %>";
                     }
                 });
             }
