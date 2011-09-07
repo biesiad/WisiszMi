@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_user 
-    puts user_json
+    logger.info user_json
     return nil if user_json.nil?
     user = User.where(:facebook_id => user_json["uid"]).first
     unless user.is_user
