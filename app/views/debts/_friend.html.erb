@@ -25,6 +25,8 @@
       <%= form.label :value, Debt.human_attribute_name(:value) %><br />
       <%= form.text_field :value %>
     </div>
+    <%= hidden_field_tag :current_user, current_user %> 
+    <%= hidden_field_tag :friend, friend.to_json %> 
     <%= form.hidden_field :user_to_id, { :value => friend.id } %>
     <%= form.hidden_field :user_from_id, { :value => current_user.id } %> 
     <%= submit_tag t(:i_owe_you), :name => "debit" %> 
