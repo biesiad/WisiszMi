@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-  <title>WisiszMi</title>
+  <title>WisiszMi - Twój notesik z pożyczkami</title>
+    <meta property="og:title" content="Wisisz Mi"/>
+    <meta property="og:type" content="other"/>
+    <meta property="og:url" content="<%= request.request_uri %>"/>
+    <meta property="og:image" content="<%= <%= image_tag "logo_mini.png", :class => "logo-mini" %>"/>
+    <meta property="og:site_name" content="WisiszMi"/>
+    <meta property="og:description"
+      content=" Wygodnie i bezboleśnie zarządzaj swoimi długami i pożyczkami.
+                WisiszMi jest twoim podręcznym notesikiem.
+                Notuj wszystkie kwoty które winni są ci znajomi i które ty jesteś im winien, a WisiszMi zsumuje wszystko i policzy Ci bilans."/> 
   <%= stylesheet_link_tag "application", :cache => true, :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
 </head>
